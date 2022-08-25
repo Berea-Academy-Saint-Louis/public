@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Simple Signature Generator for Berea Academy St. Louis">
+    <title>Berea Academy Signature Generator</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.js"></script>
+</head>
+
+<body style="margin-left:20px;">
+    <h1>Berea Academy St. Louis Signature Generator</h1>
+    <p>Enter your name, title, and (optionally) phone numbers.</p>
+    <form id="card">
+        <label for="name">Name: <input id="name" required placeholder="Herman Munster" /></label><br>
+        <label for="title">Title: <input id="title" required placeholder="Box Boy" /></label><br>
+        <label for="contact1">Contact 1: <input id="contact1" placeholder="mobile 314.555.1212" /></label> (like <em>mobile 314.555.1212</em>)<br>
+        <label for="contact2">Contact 2: <input id="contact2" placeholder="office 314.332.1403" /></label> (like <em>office 314.332.1403</em>)<br>
+        <label for="address">Include school address: <input id="address" type="checkbox" /></label><br>
+        <label for="social">Include social-media links: <input id="social" type="checkbox" checked /></label><br>
+        <div style="margin-left:30px;">
+            <label for="twitterUser">Override Twitter user link: <input id="twitterUser" type="text" value="Berea_Academy" /></label> (like <em>yourname</em> or <em>Berea_Academy</em>)<br>
+            <label for="facebookUser">Override Facebook user link: <input id="facebookUser" type="text" value="bereaacademystl" /></label> (like <em>yourname</em> or <em>bereaacademystl</em>)<br>
+            <label for="instagramUser">Override Instagram user link: <input id="instagramUser" type="text" value="bereaacademystl" /></label> (like <em>yourname</em> or <em>bereaacademystl</em>)<br>
+        </div>
+    </form>
+    <br>
+    <h4>Highlight the block below and copy/paste</h4>
+    <hr>
+    <div id="content"></div>
+    <hr>
+    <p>Just copy the block above and then paste into your email client's signature.<br><br>If you use Google Workspace email:
+    <ul>
+        <li>Open <a href="http://mail.bereaacademystl.org" target="_blank">Berea Academy Email</a></li>
+        <li>Verify that this is your Berea Academy account (it may be another GMail account) by checking upper right corner <img src="gmail-guide/choose-account.png" alt="Choose Account"> </li>
+        <li>Select the Setting Gear icon <img src="gmail-guide/settings-gear.png" alt="Gear Icon"></li>
+        <li>Choose <a href="https://mail.google.com/mail/u/0/#settings/general" target="_blank"><strong>See all settings</strong></a><img src="gmail-guide/see-all-settings.png" alt="See All Settings"></li>
+        <li>Scroll down to the <strong>Signature</strong> sectionn</li>
+        <li>Paste the copied block from above into the editor <img src="gmail-guide/paste-here.png" alt="Paste into Editor"></li>
+        <li>Scroll all the way down and click <strong>Save Changes</strong></li>
+    </ul>
+    <br><br>If you use Outlook: <ul>
+        <li>Go to <strong>Outlook/Preferences/Signatures</strong></li>
+        <li>Choose <strong>Standard</strong> under signature name <em>(you can click <strong>+</strong> and create a different name)</em></li>
+        <li>Click <strong>Edit</strong></li>
+        <li>Paste into the editor <em>(try not to adjust here)</em></li>
+        <li>Click <strong>Save</strong> (floppy icon)</li>
+        <li>In the <em>Choose default signature</em> section select the Account for your Berea Academy email</li>
+        <li>In the <em>New messages</em> select <strong>Standard</strong> (or whatever name you used above)</li>
+        <li>Optionally you can also elect to us a signature with <em>Replies/forwards</em></li>
+    </ul>
+    </p>
+    <script id="template" type="text/handlebars">
+        <table style="background-color: white;">
+            <tbody>
+                <tr>
+                    <td>
+                        <p style="line-height:1em;font-family:sans-serif;font-size:10pt;font-weight:500;color:#565a5d;background:#ffffff;">
+                            <span style="line-height:1.2em;">
+                                {{#if name.length}}
+                                    <strong style="font-weight:700;font-size:11pt;">{{name}}</strong>
+                                    <br>
+                                {{/if}}
+                                {{#if title.length}}
+                                    <em>{{title}}</em><br>
+                                {{/if}}
+                                {{#if company.length}}
+                                    <em>{{company}}</em><br>
+                                {{/if}}
+                                {{#if contact1.length}}
+                                    <span style="padding-top:1.2em;font-size:9pt;">{{contact1}}</span><br>
+                                {{/if}}
+                                {{#if contact2.length}}
+                                    <span style="font-size:9pt;">{{contact2}}</span><br>
+                                {{/if}}
+                                {{#if address}}
+                                    <span style="font-size:9pt;">9820 East Watson Rd, Crestwood, MO 63126</span><br>
+                                {{/if}}
+                            </span>
+
+                            <a href="https://bereaacademystl.org/" title="Berea Academy St. Louis Homepage"><img border=0 width="100" height="31" src="https://bereaacademystl.org/esig/stlba-logo" title="Berea Academy St. Louis logo"/> Berea Academy St. Louis</a><br>{{#if social}}
+                            <a href="https://twitter.com/{{twitterUser}}" title="Berea Academy St. Louis on Twitter"><img border=0 width="25" height="34" src="https://bereaacademystl.org/esig/twitter-logo" /></a>
+                            <a href="https://www.facebook.com/{{facebookUser}}/" title="Berea Academy St. Louis on Facebook"><img border=0 width="25" height="34" src="https://bereaacademystl.org/esig/facebook-logo" /></a>
+                            <a href="https://www.instagram.com/{{instagramUser}}/" title="Berea Academy St. Louis on Instagram"><img border=0 width="25" height="34" src="https://bereaacademystl.org/esig/instagram-logo" /></a><br>{{/if}}
+                        </p>                            
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+    <script>
+        Handlebars.registerHelper('if', function (conditional, options) {
+            if (conditional) {
+                return options.fn(this);
+            }
+        });
+
+        (function ($) {
+            var compiled = {};
+            $.fn.handlebars = function (template, data) {
+                if (template instanceof jQuery) {
+                    template = $(template).html();
+                }
+
+                compiled[template] = Handlebars.compile(template);
+                this.html(compiled[template](data));
+            };
+        })(jQuery);
+
+        var $form = $('#card');
+        var $name = $('#name');
+        var $title = $('#title');
+        var $contact1 = $('#contact1');
+        var $contact2 = $('#contact2');
+        var $address = $('#address');
+        var $social = $('#social');
+        var $twitterUser = $('#twitterUser');
+        var $facebookUser = $('#facebookUser');
+        var $instagramUser = $('#instagramUser');
+
+        function regen() {
+            var state = {};
+            state.name = $name.val();
+            state.title = $title.val();
+            state.contact1 = $contact1.val();
+            state.contact2 = $contact2.val();
+            state.address = $address.prop("checked") ? true : null;;
+            state.social = $social.prop("checked") ? true : null;
+            state.twitterUser = $twitterUser.val();
+            state.facebookUser = $facebookUser.val();
+            state.instagramUser = $instagramUser.val();
+            $('#content').handlebars($('#template'), state);
+        }
+
+        $form.keyup(regen);
+        $address.change(regen);
+        $social.change(regen);
+        regen();
+    </script>
+</body>
+
+</html>
